@@ -14,7 +14,9 @@ struct AddView: View {
     @State var someColor = #colorLiteral(red: 0.921431005, green: 0.9214526415, blue: 0.9214410186, alpha: 1)
     @State var textFieldText: String = ""
     @State var alertTitle: String = ""
-    @State var showAlert: Bool = true
+    @State var showAlert: Bool = false
+    
+    let textFieldColor = Color("TextFieldColor")
     
     var body: some View {
         ScrollView{
@@ -22,7 +24,7 @@ struct AddView: View {
                 TextField("Type something here ...", text: $textFieldText)
                     .padding(.horizontal)
                     .frame(height: 55)
-                    .background(Color(someColor))
+                    .background(textFieldColor)
                     .cornerRadius(10)
                 Button(action: saveButtonPressed, label: {
                     Text("Save".uppercased())
@@ -48,14 +50,15 @@ struct AddView: View {
     }
     
     func textIsAppropriate() -> Bool {
-        let obsceneWords = ["badword", "wordbad"]
-        let wordsInText = textFieldText.components(separatedBy: " ")
+        let obsceneWords = ["badword", "wordbad", "Badword", "Wordbad"]
+        let wordsInText = textFieldText.components(separatedBy: "Error")
         
         if textFieldText.count < 6 {
             alertTitle = "Your new todo item must be at least 6 characters long 😪"
             showAlert.toggle()
             return false
         }
+        
         for word in wordsInText {
             if obsceneWords.contains(where: { $0.caseInsensitiveCompare(word) == .orderedSame }) {
                 alertTitle = "You can't use obscene words 🥶"

@@ -10,7 +10,6 @@ import SwiftUI
 struct ListRowView: View {
     
     let item: ItemModel
-    let secondaryAccentColor = Color("SecondaryAccentColor")
     
     var body: some View {
         HStack{
