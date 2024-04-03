@@ -10,11 +10,12 @@ import SwiftUI
 struct ListRowView: View {
     
     let item: ItemModel
+    let secondaryAccentColor = Color("SecondaryAccentColor")
     
     var body: some View {
         HStack{
             Image(systemName: item.isCompleted ? "checkmark.circle" : "circle")
-                .foregroundColor(item.isCompleted ? .blue : .gray)
+                .foregroundColor(item.isCompleted ? .accentColor : .gray)
             Text(item.title)
             Spacer()
         }

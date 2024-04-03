@@ -48,7 +48,7 @@ struct AddView: View {
     }
     
     func textIsAppropriate() -> Bool {
-        let obsceneWords = ["badword1", "badword2"]
+        let obsceneWords = ["badword", "wordbad"]
         let wordsInText = textFieldText.components(separatedBy: " ")
         
         if textFieldText.count < 6 {
