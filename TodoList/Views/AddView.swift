@@ -17,6 +17,7 @@ struct AddView: View {
     @State var showAlert: Bool = false
     
     let textFieldColor = Color("TextFieldColor")
+    let secondaryAccentColor = Color("SecondaryAccentColor")
     
     var body: some View {
         ScrollView{
@@ -40,6 +41,8 @@ struct AddView: View {
         }
         .navigationTitle("Add in Item ✏️")
         .alert(isPresented: $showAlert, content: getAlert)
+        .containerRelativeFrame([.horizontal, .vertical])
+        .background(Gradient(colors: [secondaryAccentColor, .white, .accentColor]).opacity(0.6))
     }
     
     func saveButtonPressed() {

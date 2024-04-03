@@ -10,6 +10,7 @@ import SwiftUI
 struct NoItemsView: View {
     
     @State var animate: Bool = false
+    
     let secondaryAccentColor = Color("SecondaryAccentColor")
     
     var body: some View {
@@ -44,6 +45,8 @@ struct NoItemsView: View {
             .onAppear(perform: addAnimation)
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
+        .containerRelativeFrame([.horizontal, .vertical])
+        .background(Gradient(colors: [secondaryAccentColor, .white, .accentColor]).opacity(0.6))
     }
     
     func addAnimation() {
